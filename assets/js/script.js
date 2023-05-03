@@ -21,21 +21,21 @@ var clearButtonEl = $("#clear-button")
 
 
 function getWeather(city){
-    //Calls geolocation API
+    //Fetches data from geolocation api to parse out latitude and longitude for second fetch
     fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIkey)
     .then (function(response){
         response.json()
         .then (function(data){
             var lat = data[0].lat
             var lon = data[0].lon
-            //Calls 5 day 3 hour forecast with previous lat and lon
+            //Calls 5 day 3 hour forecast with previously obtained latitude and longitude
             fetch("http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey)
             .then(function(report){
                 report.json()
                 .then(function(data){
-                    //loops through data parsing one time frame per day
+                    //The given values sets the loop to look at one specific time of day across the five days
                     for(i = 7; i < data.list.length; i += 8){
-                        //converts unix timestamp to day of the week through dayjs
+                        //Coverts the unix timestamp into a readable format via dayjs
                         var parseDays = dayjs.unix(data.list[i].dt).format('ddd')
                         forecast(parseDays, data);
                     }
@@ -45,6 +45,8 @@ function getWeather(city){
     })
 }
 
+//When called this will check if the given day is either Fri, Sat, or Sun
+//If it is true, it will display the temperature, humidity and the date on the correct card.
 function forecast(parseDays, data){
     if (parseDays == "Fri"){
         var date = dayjs.unix(data.list[i].dt).format('dddd, MMM D, YYYY')
@@ -81,6 +83,7 @@ function forecast(parseDays, data){
     }
 }
 
+//Trims user search and calls getWeather function
 function displayWeather(event){
     event.preventDefault();
     if(searchCity.val().trim()!==""){
@@ -89,6 +92,7 @@ function displayWeather(event){
     }
 }
 
+//Adds the searched option into a history list
 function addToList(event){
     event.preventDefault();
     var listEl= $("<li>" + city + "</li>");
@@ -97,6 +101,7 @@ function addToList(event){
     $(".History").append(listEl);
 }
 
+//When a previous location is clicked, it will call the getWeather function with the previous search
 function invokePastSearch(event){
     var liEl=event.target;
     if (event.target.matches("li")){
@@ -106,11 +111,18 @@ function invokePastSearch(event){
 
 }
 
+//Clears the history list and resets the current weather display to blank
 function clearHistory(event){
     event.preventDefault();
     $(".History").empty();
+    for(var i = 0; i < 3; i++){
+        $("#fDate" + i).empty();
+        $("#fTemp" + i).empty();
+        $("#fHumidity" + i).empty();
+    }
 }
 
+//click events
 $("#planner-button").on("click",function(){
     document.location.replace('./planner.html');
 })

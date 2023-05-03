@@ -30,14 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load and display search history from local storage
     const historyList = document.querySelector(".History");
   
+    // Loads The history
     function loadHistory() {
-      const history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      let storedHistory = localStorage.getItem("searchHistory");
+      const history = storedHistory && storedHistory !== "" ? JSON.parse(storedHistory) : [];     // re-written this line of code to be a `and` operator with a `ternnary` operator
       historyList.innerHTML = history.map(city => `<li>${city}</li>`).join("");
     }
-  
-    // Save the search to local storage
+    
     function saveToHistory(city) {
-      let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      let storedHistory = localStorage.getItem("searchHistory");
+      let history = storedHistory && storedHistory !== "" ? JSON.parse(storedHistory) : [];       // re-written this line of code to be a `and` operator with a `ternnary` operator
       history = history.filter(item => item.toLowerCase() !== city.toLowerCase());
       history.unshift(city);
       if (history.length > 5) {
@@ -66,12 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     function clearHistory(event){
       event.preventDefault()
-      localStorage.setItem("searchHistory", "")
+      localStorage.setItem("searchHistory", "[]")
+      mapIframe.src = defaultMapSrc;                                            // Added a function when user clicks the clear history, it will call the `mapIframe.src` which is the default map display (init)
     }
-    clearButtonEl.on("click", clearHistory)
+    const clearButtonEl = document.getElementById("clear-button");              // Added a const for the `clearButtonEl`
+    clearButtonEl.addEventListener("click", clearHistory)                       // Event listener for the `clearButtonEl`
 
   
     // Load search history when the page is loaded
     loadHistory();
   });
+
   
