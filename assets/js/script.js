@@ -109,6 +109,11 @@ function invokePastSearch(event){
 function clearHistory(event){
     event.preventDefault();
     $(".History").empty();
+    for(var i = 0; i < 3; i++){
+        $("#fDate" + i).empty();
+        $("#fTemp" + i).empty();
+        $("#fHumidity" + i).empty();
+    }
 }
 
 $("#planner-button").on("click",function(){
