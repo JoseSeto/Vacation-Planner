@@ -25,12 +25,13 @@
         <a class="block text-center p-2 text-xl hover:text-gray-300" href="./planner.html">Weekend Planner</a>
         </nav>
     </header>
-    <div class="Container flex flex-row flex-wrap items-stretch content-stretch min-h-screen box-border">
-        <div class = "map p-1 flex-[0_0_35%] max-w-full h-full">
-        
-        <iframe class ="max-w-full" id="map-iframe" style="border:0;" loading="lazy"></iframe>  <!--     Added <iframe> element which is from the Google Maps Embedded API Documentation -->
-        </div>
-        <form class = "Input p-4 flex-[0_0_65%] border-l-4 border-emerald-500">
+    <div class="container flex flex-row flex-wrap items-stretch content-stretch min-h-screen box-border max-w-full max-h-full">  
+
+      <div class="map p-1 flex-[0_0_35%] max-w-full border-r-4 border-emerald-500">   <!-- Modified this <div> to help fit the Google Map -->
+          <iframe id="map-iframe" loading="lazy"></iframe>                            <!-- Modified this <iframe> to help fit the Google Map -->
+      </div>
+
+        <form class = "Input p-2 flex-[0_0_65%]">
             <div class = "my-3">
             <input class="border border-solid w-4/6 py-2 px-5 border-neutral-800 rounded-md box-border ml-6 mr-2" type="text" id = "search-city" placeholder= "Enter a city name">
             <button class="py-2 px-5 w-1/4 rounded-md text-center bg-emerald-800 hover:bg-emerald-900 text-white" id = "search-button">Search</button>
@@ -59,7 +60,7 @@
                     
             </div>
             <div>
-              <div class="flex place-content-between">
+              <div class="flex place-content-between mb-8">
                 <h1 class="text-2xl">History:</h1>
                 <button class="mr-4 float-right py-2 px-5 w-1/4 rounded-md text-center bg-emerald-800 hover:bg-emerald-900 text-white" id = "clear-button">Clear History</button>
               </div>
