@@ -1,3 +1,36 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@kgkagunat 
+JoseSeto
+/
+Vacation-Planner
+Public
+Fork your own copy of JoseSeto/Vacation-Planner
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Beta Try the new code view
+Vacation-Planner/index.html
+@Valencia01
+Valencia01 Added styling to the front page
+Latest commit 5c305f7 3 hours ago
+ History
+ 2 contributors
+@JoseSeto@Valencia01
+124 lines (111 sloc)  6.18 KB
+ 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,39 +51,45 @@
     
 </head>
 <body>
-    <header>
+    <header class="p-10 bg-emerald-800 text-gray-100 border-b-4 border-y-emerald-500">
 
-        <h1 class="bg-red-300">Vacation Planner</h1>
+        <h1 class="inline-block ml-50 text-center text-center text-4xl">Vacation Planner</h1>
         <nav>
-        <a href="./planner.html">Weekend Planner</a>
+        <a class="block text-center float-right p-2 text-xl hover:text-gray-300" href="./planner.html">Weekend Planner</a>
         </nav>
     </header>
-    <div class="container mx-auto">
-        <div class = "map">
-        </div>
-        <iframe id="map-iframe" width="600" height="450" style="border:0;" loading="lazy"></iframe>     <!-- Added <iframe> element which is from the Google Maps Embedded API Documentation -->
-        <form class = "Input">
-            <input type="text" id = "search-city" placeholder= "Enter a city name">
-            <button id = "search-button">Search</button>
+    <div class="container flex flex-row flex-wrap items-stretch content-stretch min-h-screen box-border">  
+
+      <div class="map p-1 flex-[0_0_35%] max-w-full border-r-4 border-emerald-500">   <!-- Modified this <div> to help fit the Google Map -->
+          <iframe id="map-iframe" loading="lazy"></iframe>                            <!-- Modified this <iframe> to help fit the Google Map -->
+      </div>
+
+        <form class = "Input p-2 flex-[0_0_65%]">
+            <div class = "my-3">
+            <input class="border border-solid w-4/6 py-2 px-5 border-neutral-800 rounded-md box-border ml-6 mr-2" type="text" id = "search-city" placeholder= "Enter a city name">
+            <button class="py-2 px-5 w-1/4 rounded-md text-center bg-emerald-800 hover:bg-emerald-900 text-white" id = "search-button">Search</button>
+            </div>
             <div id = "future-weather">
-                <h3>Weekend Forecast:</h3>
-                    <div class="forecast" >
+                <h3 class="text-2xl">Weekend Forecast:</h3>
+                <div class = "weather flex flex-wrap flex-row items-stretch content-stretch justify-evenly box-border mt-6 mb-6">
+                    <div class="forecast h-50 w-52 bg-emerald-800 leading-10 p-4 text-white" >
                         <p>Date: <span id="fDate0"></span></p>
                         <p>Temp: <span id="fTemp0"></span></p>
                         <p>Humidity: <span id="fHumidity0"></span></p>
                     </div>
 
-                    <div class="forecast" >
+                    <div class="forecast h-50 w-52 bg-emerald-800 leading-10 p-4 text-white" >
                         <p>Date: <span id="fDate1"></span></p>
                         <p>Temp: <span id="fTemp1"></span></p>
                         <p>Humidity: <span id="fHumidity1"></span></p>
                     </div>
 
-                    <div class="forecast">
+                    <div class="forecast h-50 w-52 bg-emerald-800 leading-10 p-4 text-white">
                         <p>Date: <span id="fDate2"></span></p>
                         <p>Temp: <span id="fTemp2"></span></p>
                         <p>Humidity: <span id="fHumidity2"></span></p>
                     </div>
+                  </div>
                     
             </div>
             <div>
@@ -118,3 +157,18 @@
 
 </body>
 </html>
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Vacation-Planner/index.html at add-css · JoseSeto/Vacation-Planner

@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function clearHistory(event){
       event.preventDefault()
       localStorage.setItem("searchHistory", "[]")
+      mapIframe.src = defaultMapSrc;                                            // Added a function when user clicks the clear history, it will call the `mapIframe.src` which is the default map display (init)
     }
     const clearButtonEl = document.getElementById("clear-button");              // Added a const for the `clearButtonEl`
     clearButtonEl.addEventListener("click", clearHistory)                       // Event listener for the `clearButtonEl`
