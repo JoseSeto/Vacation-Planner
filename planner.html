@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Planner</title>
 </head>
-<body>
+<body class="bg-emerald-300">
     <header>
 
         <h1>Vacation Planner</h1>
@@ -18,14 +18,16 @@
         </nav>
     </header>
     <button id="addEvent" type="button">Add Event</button>
-    <div class="friday">
-        
-    </div>
-    <div class="saturday">
-
-    </div>
-    <div class="sunday">
-
+    <div class="planner flex bg-emerald-300">
+        <div class="friday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+            Friday
+        </div>
+        <div class="saturday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+            Saturday
+        </div>
+        <div class="sunday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+            Sunday
+        </div>
     </div>
 
     <div class="event relative z-10 invisible" aria-labelledby="modal-title" role="dialog" aria-modal="true">

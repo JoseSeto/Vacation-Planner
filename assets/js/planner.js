@@ -37,7 +37,7 @@ function saveEvent(event){
 function updateData(length){
     //if we reach our limit on reminders and users want to add a new reminder than we
     //replace the first reminder made with the new one
-    if(dataCount[length] >= limit){
+    if(dataCount[length] > limit){
         for(var i=0; i<weekend.length; i++){
             if(tripData[0].value === weekend[i].day){
                 if(weekend[i].next){
@@ -50,12 +50,11 @@ function updateData(length){
                     }
                     if( (i+1) > weekend.length){
                         weekend[0].next=true;
-                        return i;
                     }
                     else{
                         weekend[(i+1)].next=true;
-                        return i;
                     }
+                    return;
                 }
             }
         }
@@ -124,7 +123,7 @@ function displayEvent(data, order){
     
     for(var i=0; i<data.length; i++){
         var div = document.createElement("div");
-        div.classList.add('day');
+        div.classList.add('day', 'bg-emerald-500', 'm-1', 'p-1', 'border-solid', 'border-emerald-800', 'rounded', 'border-4');
         div.setAttribute('data-placement', data[order[i]].time);
 
         var header = document.createElement("h3");
