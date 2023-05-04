@@ -1,34 +1,32 @@
-var fridayEl = document.querySelector('.friday')
-var saturdayEl = document.querySelector('.saturday')
-var sundayEl = document.querySelector('.sunday')
-var addEventEl = document.querySelector("#addEvent")
-var eventEl = document.querySelector('.event')
-var tripEl = document.querySelector('.trip')
-var tripData = []
-tripData.push(document.querySelector('#day'))
-tripData.push(document.querySelector('#time'))
-tripData.push(document.querySelector('#dayNight'))
-tripData.push(document.querySelector('#description'))
+var resetEl = document.querySelector('#clear');
+var fridayEl = document.querySelector('.friday');
+var saturdayEl = document.querySelector('.saturday');
+var sundayEl = document.querySelector('.sunday');
+var addEventEl = document.querySelector("#addEvent");
+var eventEl = document.querySelector('.event');
+var tripEl = document.querySelector('.trip');
+var tripData = [];
+tripData.push(document.querySelector('#day'));
+tripData.push(document.querySelector('#time'));
+tripData.push(document.querySelector('#dayNight'));
+tripData.push(document.querySelector('#description'));
 
 var weekend = [];
 var dataCount = [0, 0, 0];
 var limit = 10;
-var user={
-    time:"",
-    dayNight:"",
-    description:""
-};
+
 
 function saveEvent(event){
     event.preventDefault();
     var whichOne= 0;
-    var index=0;
     
     whichOne = counter(tripData[0].value)
-    index = updateData(whichOne);
+    updateData(whichOne);
     localStorage.removeItem('weekend');
     localStorage.setItem('weekend', JSON.stringify(weekend));
 
+    tripData[1].value='';
+    tripData[3].value='';
     turnOffForm();
     orderData();
     console.log(weekend);
@@ -119,20 +117,34 @@ function turnOnForm(){
 
 function displayEvent(data, order){
     var day = document.querySelector('.'+data[0].day);
-    day.textContent= '';
+    var word = data[0].day[0].toUpperCase()+data[0].day.slice(1)
+    day.textContent= word;
     
     for(var i=0; i<data.length; i++){
         var div = document.createElement("div");
-        div.classList.add('day', 'bg-emerald-500', 'm-1', 'p-1', 'border-solid', 'border-emerald-800', 'rounded', 'border-4');
+        div.classList.add('day', 'my-4','p-1', 'border-solid', 'rounded', 'border-4', 'font-semibold', 'text-xl');
+        if(data[0].day === 'friday'){
+            div.classList.add('bg-emerald-500', 'border-emerald-800');
+        }
+        else if(data[0].day === 'saturday'){
+            div.classList.add('bg-rose-500', 'border-rose-800');
+        }
+        else{
+            div.classList.add('bg-amber-400', 'border-amber-800');
+        }
         div.setAttribute('data-placement', data[order[i]].time);
 
         var header = document.createElement("h3");
         header.textContent = data[order[i]].time + " " + data[order[i]].dayNight;
+        header.classList.add('text-center')
 
+        var eventheader = document.createElement("h3");
+        eventheader.textContent='Event Description:';
         var event = document.createElement("p")
-        event.textContent = data[order[i]].description
+        event.textContent = data[order[i]].description;
 
         div.appendChild(header);
+        div.appendChild(eventheader);
         div.appendChild(event);
         day.appendChild(div)
     }
@@ -157,26 +169,10 @@ function orderData(){
     placement(day1);
     placement(day2);
     placement(day3);
-        /*for(var i=0; i < weekend.length; i++){
-            var time = childList[i].getAttribute('data-placement');
-            var greater = compareTime(time, newtime);
-            if(greater){
-                min = i;
-            }
-        }
-        if(max === 0){
-            var temp = document.createElement('div');
-            temp = childList[0];
-            console.log(temp);
-            childList[0]= div;
-            childList[0].appendChild(temp);
-        }
-        childList[max].appendChild(div);
-        max=0;*/
 }
 
 function placement (data){
-    console.log(data);
+    //console.log(data);
     if(data.length === 0){
         return;
     }
@@ -184,14 +180,13 @@ function placement (data){
     var length = data.length;
     var index=0;
     while(order.length != length){
-        //
         if(index >=length){
             break;
         }
         var min = "100:100 pm";
         for(var i=0; i< data.length; i++){
             var check= compareTime(data[i].time + ' ' + data[i].dayNight, min)
-            console.log(check)
+            //console.log(check)
             if(check && !order.includes(i)){
                 order[index]=i;
                 min = data[i].time + ' ' + data[i].dayNight;
@@ -228,11 +223,8 @@ function compareTime(time, newTime){
     }
     else{
         if( Number(time[0])  <=  Number(newTime[0])){
-            //
             if( Number(minute[0])  <=  Number(newMinute[0]) ){
-                //
                 return true;
-
             }
             else{
                 return false;
@@ -249,12 +241,23 @@ function plannedEvents(){
     if(localStorage.getItem('weekend') != null){
         weekend = JSON.parse(localStorage.getItem('weekend'));
         orderData();
+        for(var i=0; i<weekend.length; i++){
+            counter(weekend[i].day);
+        }
     }
+}
+
+function clearEvents(){
+    fridayEl.textContent='Friday';
+    saturdayEl.textContent='Saturday';
+    sundayEl.textContent='Sunday';
+    localStorage.removeItem('weekend');
+    dataCount=[0, 0, 0];
 }
 
 plannedEvents();
 
-addEventEl.addEventListener("click", turnOnForm)
-tripEl.addEventListener("submit", saveEvent)
-tripEl.addEventListener("click", cancelSave)
-
+addEventEl.addEventListener("click", turnOnForm);
+tripEl.addEventListener("submit", saveEvent);
+tripEl.addEventListener("click", cancelSave);
+resetEl.addEventListener("click", clearEvents);

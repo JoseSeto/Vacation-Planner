@@ -8,24 +8,30 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Planner</title>
 </head>
-<body class="bg-emerald-300">
-    <header>
+<body class="flex-colume items-center">
+    <header class="p-10 bg-emerald-800 text-gray-100 border-b-4 border-y-emerald-500">
 
-        <h1>Vacation Planner</h1>
+        <h1 class="inline-block ml-50 text-center text-4xl">Vacation Planner</h1>
         <nav>
-            <a href="./index.html">Home Page</a>
-            <button type="button">Reset Planner</button>
+            <a class="block text-center float-right text-xl p-2 hover:text-gray-300" href="./index.html">Home Page</a>
         </nav>
     </header>
-    <button id="addEvent" type="button">Add Event</button>
-    <div class="planner flex bg-emerald-300">
-        <div class="friday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+
+    <div class="flex justify-center w-[100%]">
+        <button id="addEvent" class="mr-[6%] my-5 py-2 px-5 w-1/6 rounded-md text-center bg-emerald-800 hover:bg-emerald-900 text-white align-middle" type="button">Add Event</button>        
+
+        <button id="clear" class="ml-[6%] my-5 py-2 px-5 w-1/6 rounded-md text-center bg-red-800 hover:bg-red-900 text-white align-middle" type="button">Reset Planner</button>
+    </div>
+    
+
+    <div class="planner flex">
+        <div class="friday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold text-4xl p-4">
             Friday
         </div>
-        <div class="saturday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+        <div class="saturday flex-colume w-2/6 mx-2 bg-rose-400 font-bold text-4xl p-4">
             Saturday
         </div>
-        <div class="sunday flex-colume w-2/6 mx-2 bg-emerald-400 font-bold">
+        <div class="sunday flex-colume w-2/6 mx-2 bg-amber-400 font-bold text-4xl p-4">
             Sunday
         </div>
     </div>
