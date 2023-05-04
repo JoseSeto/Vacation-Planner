@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
       let storedHistory = localStorage.getItem("searchHistory");
       const history = storedHistory && storedHistory !== "" ? JSON.parse(storedHistory) : [];     // re-written this line of code to be a `and` operator with a `ternnary` operator
       historyList.innerHTML = history.map(city => `<li>${city}</li>`).join("");
+      for(let i=0; i<historyList.children.length; i++){
+        historyList.children[i].classList.add('bg-emerald-800', 'hover:bg-emerald-900', 'mx-4','my-4','p-1', 'border-solid', 'rounded', 'border-4', 'font-semibold', 'text-xl', 'text-white', 'w-1/4')
+      }  
     }
     
     function saveToHistory(city) {
