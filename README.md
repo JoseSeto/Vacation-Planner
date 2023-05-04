@@ -35,11 +35,11 @@
 
 ### Installing
 
-[Repository](https://github.com/giovanne-villanueva/Vacation_Planner)
+[Repository](https://github.com/JoseSeto/Vacation-Planner)
 
 ### Executing program
 
-[Pages](https://giovanne-villanueva.github.io/Vacation_Planner/)
+[Pages](https://joseseto.github.io/Vacation-Planner/)
 
 ## Author(s)
 
