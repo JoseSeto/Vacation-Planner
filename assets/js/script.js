@@ -22,14 +22,14 @@ var clearButtonEl = $("#clear-button")
 
 function getWeather(city){
     //Fetches data from geolocation api to parse out latitude and longitude for second fetch
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIkey)
+    fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIkey)
     .then (function(response){
         response.json()
         .then (function(data){
             var lat = data[0].lat
             var lon = data[0].lon
             //Calls 5 day 3 hour forecast with previously obtained latitude and longitude
-            fetch("http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey)
+            fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey)
             .then(function(report){
                 report.json()
                 .then(function(data){
