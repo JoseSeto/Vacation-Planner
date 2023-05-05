@@ -74,4 +74,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ![Home Screen]()
 
 
-![Planner]()
+![Planner](https://joseseto.github.io/Vacation-Planner/planner.html)
