@@ -18,14 +18,15 @@
     
 </head>
 <body>
-    <header class="p-10 bg-emerald-800 text-gray-100 border-b-4 border-y-emerald-500">
+    <header class="flex place-content-between p-10 bg-emerald-800 text-gray-100 border-b-4 border-y-emerald-500">
 
         <h1 class="inline-block ml-50 text-center text-4xl">Vacation Planner</h1>
         <nav>
-        <a class="block text-center float-right p-2 text-xl hover:text-gray-300" href="./planner.html">Weekend Planner</a>
+        <a class="block text-center p-2 text-xl hover:text-gray-300" href="./planner.html">Weekend Planner</a>
         </nav>
     </header>
-    <div class="container flex flex-row flex-wrap items-stretch content-stretch min-h-screen box-border">  
+    <div class="container flex flex-row flex-wrap items-stretch content-stretch min-h-screen box-border max-w-full max-h-full">  
+
 
       <div class="map p-1 flex-[0_0_35%] max-w-full border-r-4 border-emerald-500">   <!-- Modified this <div> to help fit the Google Map -->
           <iframe id="map-iframe" loading="lazy"></iframe>                            <!-- Modified this <iframe> to help fit the Google Map -->
@@ -60,9 +61,12 @@
                     
             </div>
             <div>
-                <h1 class="inline-block ml-50 text-center text-center text-4xl">History:</h1>
-                <button id = "clear-button" class="ml-[65%] py-2 px-5 w-1/6 rounded-md text-center bg-red-800 hover:bg-red-900 text-white align-middle">Clear History</button>
-            <ul class="History flex flex-wrap">
+              <div class="flex place-content-between mb-8">
+                <h1 class="text-2xl">History:</h1>
+                <button class="mr-4 float-right py-2 px-5 w-1/4 rounded-md text-center bg-emerald-800 hover:bg-emerald-900 text-white" id = "clear-button">Clear History</button>
+              </div>
+            <ul class="History">
+
 
           </ul>
           </div>
