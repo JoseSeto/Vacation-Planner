@@ -28,6 +28,8 @@
 
 ## **Getting Started**
 
+### Start by searching a city name and the map will update to show the city. If Friday, Saturday, or Sundar are within the five day forecast, the weather will be displayed in the corresponding boxex. If no data is found for those three days, nothing will be displayed. You can also click on the history buttons to bring up previous sarche results. In the header there is a button to take you to a planner section where you can add events you would like to do. This has a limit of 10 events per day, if you go over the 10, it will reset the first event made.
+
 ### Dependencies
 
 * MacOS
@@ -71,7 +73,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Deployed Program
 
-[Home Screen](https://joseseto.github.io/Vacation-Planner/)
+[Home Screen]()
 
 
-[Planner](https://joseseto.github.io/Vacation-Planner/planner.html)
+[Planner]()
