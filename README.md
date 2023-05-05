@@ -73,7 +73,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Deployed Program
 
-[Home Screen]()
+![Home Screen]()
 
 
-[Planner]()
+![Planner]()
